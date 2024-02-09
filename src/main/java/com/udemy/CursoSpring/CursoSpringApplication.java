@@ -8,18 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 public class CursoSpringApplication {
-	public static void main(String[] args) {
-				SpringApplication.run(CursoSpringApplication.class, args);
-			}
+	private AppConfiguration appConfiguration;
+	public CursoSpringApplication(AppConfiguration appConfiguration){
+		this.appConfiguration = appConfiguration;
+	}
 
-		 @GetMapping("/inicio")
-		public String inicio(){
-				return "Olá spring Boot";
+	public static void main(String[] args) { SpringApplication.run(CursoSpringApplication.class, args);}
+	@GetMapping("/inicio")
+	public String inicio(){ return "Olá spring Boot - Palmeiras Campeão 2024 Copa do Brasil";}
+	@GetMapping ("/configuracao")
+	public String config(){ return appConfiguration.getMessange();
 
-				@GetMapping ("/configuracao")
-						public String config(){
-					return appConfiguration.getmessage();
-			 }
 		 }
 }
 
